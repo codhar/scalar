@@ -6,27 +6,26 @@ public class AddBinaryString {
 		System.out.println(test.addBinary("1", "1"));
 	}
 	
-	public String addBinary(String A, String B) {
-        int aSize = A.length();
-        int bSize = B.length();
+	public String addBinary(String a, String b) {
+        int bSixze = b.length();
         int maxLength = 0;
         
-        if(aSize > bSize) {
-        	B = appendZero(aSize-bSize, B);
-        	maxLength = aSize;
+        if(a.length() > b.length()) {
+        	b = appendZero(a.length()-b.length(), b);
+        	maxLength = a.length();
         }
-        if(bSize > aSize) {
-        	A = appendZero(bSize-aSize, A);
-        	maxLength = bSize;
+        if(b.length() > a.length()) {
+        	a = appendZero(b.length()-a.length(), a);
+        	maxLength = b.length();
         }
-        if(bSize == aSize) {
-        	maxLength = bSize;
+        if(b.length() == a.length()) {
+        	maxLength = b.length();
         }
         String result = "";
         int  carry = 0;
         for (int i =maxLength-1; i >= 0 ;i--) {
-        	int sum  = ( (A.charAt(i) - '0') + (B.charAt(i) - '0') + carry ) % 2;
-        	carry = ( (A.charAt(i) - '0') + (B.charAt(i) - '0') + carry ) / 2;
+        	int sum  = ( (a.charAt(i) - '0') + (b.charAt(i) - '0') + carry ) % 2;
+        	carry = ( (a.charAt(i) - '0') + (b.charAt(i) - '0') + carry ) / 2;
         	if(sum == 0) {
         		result = '0' + result  ;
         	}
@@ -34,32 +33,6 @@ public class AddBinaryString {
         		result = '1' + result  ;
         	}
         	
-        	/*if(A.charAt(i) == '1' && B.charAt(i) == '1') {
-        		if(carry == '1') {
-        			result = '1' + result  ;
-        			carry = '1';
-        		}else {
-        			result = '0' + result  ;
-        			carry = '1';
-        		}
-        	}
-        	else if (A.charAt(i) == '0' && B.charAt(i) == '0') {
-        		if(carry == '1') {
-        			result = '1' + result ;
-        			carry = '0';
-        		}else {
-        			result = '0' + result ;
-        			carry = '0';
-        		}
-        	}else if(A.charAt(i) != B.charAt(i)) {
-        		if(carry == '1') {
-        			result = '0' + result ;
-        			carry = '1';
-        		}else {
-        			result = '1' + result ;
-        			carry = '0';
-        		}
-        	}*/
         }
         if (carry == 1) {
         	result =  '1' + result ;
@@ -67,8 +40,8 @@ public class AddBinaryString {
         
         return result;
     }
-	
-	private static String appendZero(int noOfZero, String str) {
+
+    private static String appendZero(int noOfZero, String str) {
 		String zeroStr = "";
 		for(int i =0 ; i< noOfZero ; i++) {
 			zeroStr = zeroStr + "0";
